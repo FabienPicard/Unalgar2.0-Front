@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  host_back:"http://localhost:8080/api/",
+  movie_endPoint:"movies/",
+  movie_imgUrl:"https://image.tmdb.org/t/p/w200",
+  getCardMoviesEndPoint:"getCardMovies/",
+  pokemon_endPoint:"pokemons/",
+  getPokemonCard:"getPokemonsCards",
+  score_endPoint:"score/",
+  addScore:"addScore",
+  getTopScore:"getTopScore",
 };
 
 /*

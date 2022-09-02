@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { Card } from "../../common/card.model";
-import { GameService } from "src/app/common/game.service";
-import { Status } from "src/app/common/status.model";
+import { Card } from "../../common/models/card.model";
+import { GameService } from "src/app/common/services/game.service";
+import { Status } from "src/app/common/models/status.model";
+import Swal from "sweetalert2";
 @Component({
   selector: "app-card-deck",
   templateUrl: "./card-deck.component.html",
@@ -21,15 +22,12 @@ export class CardDeckComponent implements OnInit {
   constructor(private gameService: GameService) {}
 
   ngOnInit(): void {
-    // on charge les films
-    this.gameService.getMovies();
-    // on recup la liste
-    this.cardDeck = this.gameService.getCardDeck();
+    this.choixCard()
     this.hasGameStarted = this.gameService.hasGameStarted;
   }
 
   pickFirstCard() {
-    this.gameService.pickFirstCard();
+   this.cardDeck = this.gameService.pickFirstCard();
     this.pickPlayingCard();
   }
 
@@ -54,4 +52,9 @@ export class CardDeckComponent implements OnInit {
       this.gameService.getMovies();
     }
   }
+
+  choixCard(): void {
+    this.gameService.choixCard()
+  }
+
 }

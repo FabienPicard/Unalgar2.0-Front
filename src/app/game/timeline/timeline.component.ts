@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { GameService } from "src/app/common/game.service";
-import { Message } from "src/app/common/message.model";
-import { MessageService } from "src/app/common/message.service";
-import { Status } from "src/app/common/status.model";
-import { Timer } from "src/app/common/timer.model";
-import { Card } from "../../common/card.model";
+import { GameService } from "src/app/common/services/game.service";
+import { Message } from "src/app/common/models/message.model";
+import { MessageService } from "src/app/common/services/message.service";
+import { Status } from "src/app/common/models/status.model";
+import { Timer } from "src/app/common/models/timer.model";
+import { Card } from "../../common/models/card.model";
 
 @Component({
   selector: "app-timeline",
@@ -56,8 +56,8 @@ export class TimelineComponent implements OnInit {
       this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
       this.checkCardPosition(this.playingCard);
       setTimeout(() => {
-        this.pickPlayingCard();
-      }, 800);
+        this.pickPlayingCard()
+      }, 100);
     }
   }
 
@@ -71,7 +71,7 @@ export class TimelineComponent implements OnInit {
       this.timelineDeck.splice(playingCardIndex, 0, this.playingCard);
       this.checkCardPosition(this.playingCard);
       setTimeout(() => {
-        this.pickPlayingCard();
+        this.pickPlayingCard()
       }, 100);
     }
   }
@@ -130,6 +130,7 @@ export class TimelineComponent implements OnInit {
   // Pioche une carte aléatoire, l'enlève du deck, la met dans la main du joueur
   pickPlayingCard() {
     if (!this.stopTimer) {
+      this.cardDeck = this.gameService.cardDeck
       let randomIndex = Math.floor(Math.random() * this.cardDeck.length);
       this.playingCard = this.cardDeck[randomIndex];
       this.cardDeck.splice(randomIndex, 1);
@@ -140,4 +141,5 @@ export class TimelineComponent implements OnInit {
       }
     }
   }
+
 }

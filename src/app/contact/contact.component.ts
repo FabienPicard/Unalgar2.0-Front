@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import Swal from "sweetalert2";
-import { User } from "../common/user.model";
+import { User } from "../common/models/user.model";
 
 @Component({
   selector: "app-contact",

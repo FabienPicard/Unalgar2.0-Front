@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { GameService } from "src/app/common/game.service";
-import { Status } from "src/app/common/status.model";
-import { Card } from "../../common/card.model";
+import { GameService } from "src/app/common/services/game.service";
+import { Status } from "src/app/common/models/status.model";
+import { Card } from "../../common/models/card.model";
 import { CardDeckComponent } from "../card-deck/card-deck.component";
 @Component({
   selector: "app-hand",

@@ -1,2 +1,16 @@
+<div class="timerBody">
+  <div class="buttonReturn">
+      <!--mise en place d'un bouton avec un la méthode click qui renvoie à la fonction confirmeretour() dans le game.ts-->
+      <button (click)="confirmeRetour()">
+        <img class="backHome" src="../../assets/img/leftArrow1.png" />
+      </button>
+  </div>
 <span [ngClass]="{'warning' : !isDateRight.value}"
   [ngClass]="hasGameStarted.value? 'warning':''">0{{timerObject.minute}}:{{timerObject.displayZero}}{{timerObject.second}}</span>
+  <div class="topScore">
+    <div *ngFor="let score of this.gameService.topScores">
+      {{score.name}} : 
+      {{score.score}}
+    </div>
+  </div>
+</div>

@@ -27,6 +27,9 @@
   justify-content: flex-end;
   border-radius: 10px;
   opacity: 1 !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .encart {
@@ -71,6 +74,11 @@ h1 {
 .emptySpace:hover {
   border: 3px orange solid;
   animation: none;
+}
+
+.title{
+  display: flex;
+  justify-content: space-around;
 }
 
 @keyframes pulse {
