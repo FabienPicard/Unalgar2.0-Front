@@ -169,7 +169,7 @@ export class GameService {
       cancelButtonText:"Non",
     }).then((result)=>{
       if(result.isConfirmed){
-        //formulaire a faire
+        //Popup formulaire score
         Swal.fire({
           title:"Entrez votre nom",
           inputLabel:"name",
@@ -177,15 +177,17 @@ export class GameService {
           heightAuto:false,
           inputValue:this.name,
         }).then((result)=>{
-          this.name = result.value
-          this.score.name = this.name
-          this.score.cardType = this.cardType
-          this.score.score = this.scoreTotal
-          this.scoreService.addScore(this.score).subscribe((response)=>{
-            this.choixCard()
-          }, (err)=>{
-            console.error(err.error)
-          })
+          if(result.isConfirmed){
+            this.name = result.value
+            this.score.name = this.name
+            this.score.cardType = this.cardType
+            this.score.score = this.scoreTotal
+            this.scoreService.addScore(this.score).subscribe((response)=>{
+              this.choixCard()
+            }, (err)=>{
+              console.error(err.error)
+            })
+          }
         })
       } else{
         this.choixCard()
